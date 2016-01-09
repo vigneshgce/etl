@@ -1,0 +1,72 @@
+<script type="text/javascript">
+document.getElementById("uploadBtn").onchange = function () {
+document.getElementById("uploadFile").value = this.value;
+};
+</script>
+<div ng-controller="etlController" class="etl_container">
+	<div class="top_bar"></div>
+		<div class="etl_header">
+			<p>ETL Engineering Challenge</p>
+		</div>
+			<div class="border-bottom"></div>
+
+		<div class="etl_body">
+&nbsp;		
+			<div class="etl_body_container">
+			<div class="section">
+			<div>Select Data File</div>
+			<div class="fileUpload">
+			<input type="file" on-read-file="showContent($fileContent,'data')" class="styleFileUpl"></input>
+			</div>
+			
+			</div>
+						<div class="section">
+						+
+						</div>
+			<div class="section">
+			<div>Select Map File</div>
+			<div class="fileUpload">
+			<input type="file" on-read-file="showContent($fileContent,'map')" class="styleFileUpl"></input>
+			</div>
+			</div>
+			<div class="section">
+			<button ng-click="upload()" class="addbtbn">Upload</button>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="error" ng-show="!customer.data.length&&renderUpl||errorDisplay">
+			Please Select matching data and map file
+			
+			</div>
+			<div ng-show="customer.data.length">
+			<h2>No Of Records: {{  customer.data.length }}</h2> 
+			<table class="table_style">
+				<tr>
+				<th><div>Created At</div></th>
+				<th><div>Ip Address</div></th>
+				<th><div>latitude</div></th>
+				<th><div>longitude</div></th>
+				<th><div>firstname</div></th>
+			   <th><div>last name</div></th>
+			   	<th><div>Email Id</div></th>
+				</tr>
+				<tr ng-repeat="customer in customer.data">
+				<td>{{ customer.created_at}}</td>
+				<td>{{ customer.ip}}</td>
+				<td>{{ customer.latitude}}</td>
+				<td>{{ customer.longitude}}</td>
+				<td>{{ customer.first_name}}</td>
+				<td>{{ customer.last_name}}</td>
+				<td>{{ customer.email}}</td>
+				</tr>
+			</table>
+	
+			</div>
+
+			
+
+
+					
+			
+			
+		</div>
+</div>
